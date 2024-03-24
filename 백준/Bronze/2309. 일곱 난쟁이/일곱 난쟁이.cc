@@ -18,13 +18,12 @@ int main() {
     }
 
     sort(small_people.begin(), small_people.end());
-    for(int i = 0; i < small_people.size(); i++){
-        for(int j = i + 1; j < small_people.size(); j++){
+    for(int i = 0; i <9; i++){
+        for(int j = i + 1; j < 9; j++){
             if(sum - (small_people[i] + small_people[j]) == 100){
-                // 먼저 j 삭제, i 삭제 순으로 변경
                 small_people.erase(small_people.begin() + j); // 먼저 j 삭제
                 small_people.erase(small_people.begin() + i); // 다음 i 삭제
-                goto END; // 모든 루프를 탈출 -> goto : 특정 위치로 직접 이동 
+               goto END; // 모든 루프를 탈출 -> goto : 특정 위치로 직접 이동 
             }
         }
     }
