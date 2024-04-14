@@ -1,16 +1,17 @@
 #include <bits/stdc++.h>
 #define pii pair<int, int>
 #define ll long long
-
+// 이상한 술집
 using namespace std;
-ll solve(ll mid, vector<ll> &arr){
+
+ll solve(ll mid, vector<ll> &num){
     ll result =0;
 
-    for(ll &s : arr){
-        result += s/mid; 
+    for(ll &s:num){
+        result += s/mid;
     }
 
-    return result ;
+    return result;
 }
 
 
@@ -19,27 +20,28 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     
-    int k, n; cin >> k >> n;
-    //이미 가지고 있는 랜선 k, 필요한 랜선 개수 n
-    vector<ll> arr(k);
-    ll max_lenght=0;
-    for(ll &s:arr) {
+    int n, k; cin >> n >> k;
+    vector<ll> num(n);
+    ll max_value = 0;
+    for(ll &s:num) {
         cin >> s;
-        max_lenght = max(s, max_lenght);
+        max_value = max(max_value, s);
     }
-    ll lo =1; 
-    ll hi = max_lenght;
+
+    ll lo = 1;
+    ll hi = max_value;
     ll result = lo;
 
     while(lo<=hi){
-        ll mid = (lo+hi)/2; //중간 값 
+        ll mid = (lo+hi)/2;
 
-        ll tot = solve(mid, arr);
+        ll sum = solve(mid, num);
 
-        if(tot >= n){
+        if(sum >= k){
             lo = mid+1;
             result = mid;
         }else hi = mid -1;
+
     }
     cout << result << "\n";
     
