@@ -12,8 +12,7 @@ double grade_to_score(string _grade) {
     else if(_grade == "D+") score = 1.5;
     else if(_grade == "D0") score = 1.0;
     else if(_grade == "F") score = 0.0;
-    else score = 0.0; // 여기서는 P인 경우도 포함되어 0으로 처리
-
+    
     return score;
 }
 
