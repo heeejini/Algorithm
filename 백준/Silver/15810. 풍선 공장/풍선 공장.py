@@ -1,30 +1,28 @@
-def main():
-    import sys
+import sys
+input=sys.stdin.readline
 
-    # 입력을 빠르게 받기 위해 sys.stdin 사용
-    input = sys.stdin.readline
+n, m=map(int, input().split())
+arr=list(map(int,input().split()))
 
-    n, m = map(int, input().split())
-    data = list(map(int, input().split()))
+low, high=1, min(arr) * m
 
-    # 가장 빠른 기계의 시간으로 hi 초기화
-    lo, hi = 1, min(data) * m
 
-    while lo < hi:
-        mid = (lo + hi) // 2
-        balloon = 0
+result=high
 
-        for time in data:
-            balloon += mid // time
-            if balloon >= m:  # 목표 달성 시 더 이상 계산할 필요 없음
-                break
+while low<=high :
+    mid=(low+high)//2
+    balloon=0
+    
+    for time in arr:
+        balloon+=mid//time
 
         if balloon >= m:
-            hi = mid  # 최소 시간을 찾기 위해 hi를 줄임
-        else:
-            lo = mid + 1  # 시간을 늘려야 함
-
-    print(lo)
-
-if __name__ == "__main__":
-    main()
+            high= mid
+            
+    if balloon >= m:
+            result=mid
+            high=mid-1
+    else:
+        low=mid+1
+        
+print(result)
