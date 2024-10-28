@@ -12,9 +12,9 @@ def is_possible(mid):
         if house[i] - last >= mid :
             cnt +=1 
             last = house[i]
-        if cnt >= c : return False
+        if cnt >= c : return True
 
-    return True
+    return False
 
 def solve():
 
@@ -25,10 +25,10 @@ def solve():
         mid  = (lo+hi)//2 
 
         if is_possible(mid)  :
-            hi = mid -1
-        else :
             answer = mid
             lo = mid + 1
+        else :
+            hi = mid -1
 
     print(answer)
 
